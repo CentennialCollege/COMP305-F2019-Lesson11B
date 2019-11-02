@@ -2,14 +2,17 @@ version: 2
 importPivots: 1
 tpsheetFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
+- Assets/Textures/coin/coint.tpsheet
 - Assets/Textures/enemy/sprites/enemyatlas.tpsheet
 - Assets/Textures/hero/sprites/heroatlas.tpsheet
 textureFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.png
+- Assets/Textures/coin/coint.png
 - Assets/Textures/enemy/sprites/enemyatlas.png
 - Assets/Textures/hero/sprites/heroatlas.png
 normalmapFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+- 
 - 
 - 
 enableDebugOutput: 0
