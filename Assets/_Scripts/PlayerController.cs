@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundTarget;
 
     public AudioSource jumpSound;
+    public Vector2 maximumVelocity = new Vector2(20.0f, 30.0f);
 
     // Start is called before the first frame update
     void Start()
@@ -47,24 +48,29 @@ public class PlayerController : MonoBehaviour
         // Move Right
         if (Input.GetAxis("Horizontal") > 0)
         {
-            heroSpriteRenderer.flipX = false;
+            //heroSpriteRenderer.flipX = false;
+            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+
             if(isGrounded)
             {
                 heroAnimState = HeroAnimState.WALK;
                 heroAnimator.SetInteger("AnimState", (int)HeroAnimState.WALK);
-                heroRigidBody.AddForce(Vector2.right * moveForce);
+                //heroRigidBody.AddForce(Vector2.right * moveForce);
+                heroRigidBody.AddForce(new Vector2(1,1) * moveForce);
             }
         }
 
         // Move Left
         if (Input.GetAxis("Horizontal") < 0)
         {
-            heroSpriteRenderer.flipX = true;
-            if(isGrounded)
+            //heroSpriteRenderer.flipX = true;
+            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+            if (isGrounded)
             {
                 heroAnimState = HeroAnimState.WALK;
                 heroAnimator.SetInteger("AnimState", (int)HeroAnimState.WALK);
-                heroRigidBody.AddForce(Vector2.left * moveForce);
+                //heroRigidBody.AddForce(Vector2.left * moveForce);
+                heroRigidBody.AddForce(new Vector2(-1, 1) * moveForce);
             }
         }
 
@@ -77,6 +83,11 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
             jumpSound.Play();
         }
+
+        heroRigidBody.velocity = new Vector2(
+            Mathf.Clamp(heroRigidBody.velocity.x, -maximumVelocity.x, maximumVelocity.x),
+            Mathf.Clamp(heroRigidBody.velocity.y, -maximumVelocity.y, maximumVelocity.y)
+            );
 
     }
 }
