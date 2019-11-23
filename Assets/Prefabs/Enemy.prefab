@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &396284628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 396284629}
+  m_Layer: 10
+  m_Name: healthBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &396284629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396284628}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.623, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 205367011819593164}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &689403342
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +42,7 @@ GameObject:
   m_Layer: 10
   m_Name: wallAhead
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -42,7 +72,7 @@ GameObject:
   m_Layer: 10
   m_Name: lookAhead
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -94,6 +124,7 @@ Transform:
   m_Children:
   - {fileID: 2040087971}
   - {fileID: 689403343}
+  - {fileID: 396284629}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -180,7 +211,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAnimState: 0
   enemyAnimator: {fileID: 205367011819593170}
-  enemySpriteRenderer: {fileID: 205367011819593165}
   enemyRigidBody: {fileID: 205367011819593166}
   isGrounded: 0
   hasGroundAhead: 0
@@ -188,7 +218,13 @@ MonoBehaviour:
   lookAhead: {fileID: 2040087971}
   wallAhead: {fileID: 689403343}
   isFacingRight: 1
-  movementSpeed: 5
+  healthBar: {fileID: 0}
+  healthBarTransform: {fileID: 396284629}
+  speed: 1.5
+  strength: 10
+  toughness: 1
+  maximumHealth: 10
+  currentHealth: 10
 --- !u!50 &205367011819593166
 Rigidbody2D:
   serializedVersion: 4

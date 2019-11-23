@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D heroRigidBody;
 
     [Header("Physics Related")]
+    public LayerMask movementLayerMask;
     public float moveForce;
     public float jumpForce;
     public bool isGrounded;
@@ -39,7 +40,10 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         isGrounded = Physics2D.BoxCast(
-            transform.position, new Vector2(2.0f, 1.0f), 0.0f, Vector2.down, 1.0f, 1 << LayerMask.NameToLayer("Ground"));
+            transform.position, 
+            new Vector2(2.0f, 1.0f), 0.0f, 
+            Vector2.down, 1.0f, 
+            movementLayerMask);
 
         // Idle State
         if (Input.GetAxis("Horizontal") == 0)
